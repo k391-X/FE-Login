@@ -22,6 +22,7 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
+import { notifyMessage } from '../../util/index.ts';
 import { login } from '../../services/request/api';
 
 const data = reactive({
@@ -42,7 +43,6 @@ const handleLogin = async () => {
 		alert('Login failed! Please check the information again !');
 	}
 };
-
 
 </script>
 

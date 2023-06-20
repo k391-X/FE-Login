@@ -8,14 +8,21 @@ export async function login (username: string, password: string): Promise<boolea
         //     password: password
         // });
 
+        // const response = reactive({
+        //     status: 200,
+        //     data: {
+        //         user:{
+        //              name: 'Thang',
+        //              age: 26,
+        //             },
+        //         token: '123456'
+        //     }
+        // });
+
         const response = reactive({
-            status: 200,
+            status: 401,
             data: {
-                user:{
-                     name: 'Thang',
-                     age: 26,
-                    },
-                token: '123456'
+                message: 'Invalid username or password'
             }
         });
 
