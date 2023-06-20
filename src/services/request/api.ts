@@ -1,23 +1,25 @@
 import axios from 'axios';
-import { reactive } from 'vue';
+// import { reactive } from 'vue';
 
 async function login (username: string, password: string): Promise<boolean> {
     try {
-        // const response = await axios.post('/api/auth/login', {
-        //     username: username,
-        //     password: password
-        // });
-
-        const response = reactive({
-            status: 200,
-            data: {
-                user:{
-                     name: 'Thang',
-                     age: 26,
-                    },
-                token: '123456'
-            }
+        console.log({username, password});
+        const response = await axios.post('http://localhost:7042/api/data/user', {
+            username: username,
+            password: password
         });
+
+        console.log(response);
+        // const response = reactive({
+        //     status: 200,
+        //     data: {
+        //         user:{
+        //              name: 'Thang',
+        //              age: 26,
+        //             },
+        //         token: '123456'
+        //     }
+        // });
 
         // const response = reactive({
         //     status: 401,
@@ -31,12 +33,13 @@ async function login (username: string, password: string): Promise<boolean> {
             window.localStorage.setItem("token", JSON.stringify(response.data.token));
             return true;
         } else {
+            console.log('false');
             return false;
         }
     } catch (e) {
         console.log(e);
+        return false;
     }
-    return false;
 }
 
 async function logout () {
