@@ -30,6 +30,8 @@ async function login (username: string, password: string): Promise<boolean> {
             window.localStorage.setItem("userInfo", JSON.stringify(response.data.user));
             window.localStorage.setItem("token", JSON.stringify(response.data.token));
             return true;
+        } else {
+            return false;
         }
     } catch (e) {
         console.log(e);

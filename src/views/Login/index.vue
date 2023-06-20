@@ -3,12 +3,13 @@
         <section id="content">
             <form @submit.prevent>
                 <h1>Login Form</h1>
-                <div>
-                    <input type="text" placeholder="Username" id="username" v-model="data.userName" required/>
+                <div class="input">
+                    <input type="text" :class=" {'validate-input': checkInput}" placeholder="Username" id="username" v-model="data.userName" required />
                 </div>
-                <div>
-                    <input type="password" placeholder="Password" id="password" v-model="data.password" required/>
+                <div class="input">
+                    <input type="password" :class=" {'validate-input': checkInput}" placeholder="Password" id="password" v-model="data.password" required/>
                 </div>
+				<label v-if="checkInput" class="validate-text"> Wrong username or password! </label>
                 <div>
                     <input type="submit" value="Log in" @click="handleLogin" />
                     <a href="#">Lost your password?</a>
@@ -20,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { notifyMessage } from '../../utils/index';
 import { login } from '../../services/request/api';
@@ -32,6 +33,8 @@ const data = reactive({
     password: 'Efink'
 });
 
+const checkInput = ref(false);
+
 const handleLogin = async () => {
 
 	const success = await login(data.userName, data.password);
@@ -42,6 +45,7 @@ const handleLogin = async () => {
 	} else {
 		notifyMessage(422, 'Login failed! Please check the information again!');
 		alert('Login failed! Please check the information again !');
+		checkInput.value = true;
 	}
 };
 </script>
@@ -287,4 +291,14 @@ form:after {
 .button a:hover {
 	background-position: 0 -135px;
 	color: #00aeef;
-}</style>
+	
+}
+
+#content form div.input input.validate-input {
+	border: 2px solid red;
+}
+
+.validate-text {
+	color: red;
+}
+</style>
