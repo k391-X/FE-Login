@@ -10,7 +10,7 @@
                     <input type="password" placeholder="Password" id="password" v-model="data.password" required/>
                 </div>
                 <div>
-                    <input type="submit" value="Log in" @click="login"/>
+                    <input type="submit" value="Log in" @click="handleLogin" />
                     <a href="#">Lost your password?</a>
                     <a href="#">Register</a>
                 </div>
@@ -21,16 +21,29 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue';
+import { useRouter } from 'vue-router';
+import { login } from '../../services/request/api';
 
 const data = reactive({
     userName: 'Knife',
     password: 'Efink'
 });
 
-const login = () => {
-    console.log(data.userName);
-    console.log(data.password);
+const handleLogin = async () => {
+	const router = useRouter();
+
+	const success = await login(data.userName, data.password);
+
+	if (success) {
+		console.log("Success");
+		console.log(success);
+		router.push('/home');
+	} else {
+		alert('Login failed! Please check the information again !');
+	}
 };
+
+
 </script>
 
 <style scoped>  
