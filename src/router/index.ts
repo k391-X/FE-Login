@@ -23,7 +23,12 @@ const routes: Array<RouteRecordRaw> = [
         path: '/login',
         name: 'Login',
         component: () => import('../views/Login/index.vue'),
-    }
+    },
+    {
+        path: '/logout',
+        name: 'Logout',
+        component: () => import('../views/Logout/index.vue'),
+    },
 ];
 
 const router = createRouter({

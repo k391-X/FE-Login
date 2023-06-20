@@ -22,8 +22,10 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
-import { notifyMessage } from '../../util/index.ts';
+import { notifyMessage } from '../../utils/index';
 import { login } from '../../services/request/api';
+
+const router = useRouter();
 
 const data = reactive({
     userName: 'Knife',
@@ -31,25 +33,21 @@ const data = reactive({
 });
 
 const handleLogin = async () => {
-	const router = useRouter();
 
 	const success = await login(data.userName, data.password);
 
 	if (success) {
-		console.log("Success");
-		console.log(success);
+		notifyMessage(200, 'Login Success!');
 		router.push('/home');
 	} else {
+		notifyMessage(422, 'Login failed! Please check the information again!');
 		alert('Login failed! Please check the information again !');
 	}
 };
-
 </script>
 
 <style scoped>  
 .container {
-    /* border: 2px solid red; */
-    /* background: #DCDDDF url(https://cssdeck.com/uploads/media/items/7/7AF2Qzt.png); */
     color: #000;
     font: 14px Arial;
     margin: 0 auto;

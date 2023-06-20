@@ -1,7 +1,6 @@
 import  { notify } from '@kyvg/vue3-notification';
-import "@kyvg/vue3-notification";
 
-const notifyMessage = (status, message) => {
+const notifyMessage = (status: number, message: string) => {
     if (status == 422) {
         notify({
             type: "warn",
