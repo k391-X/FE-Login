@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const msg = ref("Dashboard");
+const msg = ref('Dashboard')
 const count = ref(0)
 </script>
 
