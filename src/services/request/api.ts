@@ -40,7 +40,6 @@ async function login(username: string, password: string): Promise<boolean> {
       return false
     }
   } catch (e) {
-    console.log(e)
     return false
   }
 }
