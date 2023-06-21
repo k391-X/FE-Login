@@ -1,25 +1,23 @@
-import  { notify } from '@kyvg/vue3-notification';
+import { notify } from '@kyvg/vue3-notification'
 
 const notifyMessage = (status: number, message: string) => {
-    if (status == 422) {
-        notify({
-            type: "warn",
-            title: "Unsuccessful!",
-            text: message,
-            duration: 10000,
-            speed: 2000,
-        });
-    } else if (status == 200) {
-        notify({
-            type: "success",
-            title: "Successful!",
-            text: message,
-            duration: 10000,
-            speed: 2000,
-        });
-    }
+  if (status == 422) {
+    notify({
+      type: 'warn',
+      title: 'Unsuccessful!',
+      text: message,
+      duration: 10000,
+      speed: 2000,
+    })
+  } else if (status == 200) {
+    notify({
+      type: 'success',
+      title: 'Successful!',
+      text: message,
+      duration: 10000,
+      speed: 2000,
+    })
+  }
 }
 
-export {
-    notifyMessage
-}
+export { notifyMessage }

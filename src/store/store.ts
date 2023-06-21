@@ -1,23 +1,23 @@
-import { createStore } from 'vuex';
+import { createStore } from 'vuex'
 
 interface State {
-    token: string | null;
+  token: string | null
 }
 
 const store = createStore<State>({
-    state: {
-        token: null,
+  state: {
+    token: null,
+  },
+  mutations: {
+    setToken(state, token: string) {
+      state.token = token
     },
-    mutations: {
-        setToken(state, token: string) {
-            state.token = token;
-        },
+  },
+  getters: {
+    isAuthenticated(state) {
+      return state.token !== null
     },
-    getters: {
-        isAuthenticated(state) {
-            return state.token !== null;
-        },
-    },
-});
+  },
+})
 
-export default store;
+export default store
