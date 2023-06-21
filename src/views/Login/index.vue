@@ -41,6 +41,7 @@ import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { notifyMessage } from '../../utils/index'
 import { login } from '../../services/request/api'
+import { notify } from '@kyvg/vue3-notification'
 
 const router = useRouter()
 
@@ -52,11 +53,14 @@ const data = reactive({
 const checkInput = ref(false)
 
 const handleLogin = async () => {
-  const success = await login(data.userName, data.password)
+  const statusCode = await login(data.userName, data.password)
 
-  if (success) {
-    notifyMessage(200, 'Login Success!')
+  if (statusCode == 200) {
+    notifyMessage(200, 'Login Success!');
     router.push('/home')
+  } else if (statusCode == 500){
+    alert('An error occurred during login! Please try again in a few minutes!');
+    notifyMessage(500, 'An error occurred during login! Please try again in a few minutes!')
   } else {
     notifyMessage(422, 'Login failed! Please check the information again!')
     alert('Login failed! Please check the information again !')

@@ -1,7 +1,7 @@
 import axios from 'axios'
 // import { reactive } from 'vue';
 
-async function login(username: string, password: string): Promise<boolean> {
+async function login(username: string, password: string): Promise<number> {
   try {
     console.log({ username, password })
     const response = await axios.post('http://localhost:7042/api/data/user', {
@@ -34,13 +34,10 @@ async function login(username: string, password: string): Promise<boolean> {
         JSON.stringify(response.data.user),
       )
       window.localStorage.setItem('token', JSON.stringify(response.data.token))
-      return true
-    } else {
-      console.log('false')
-      return false
     }
+    return response.status;
   } catch (e) {
-    return false
+    return 500;
   }
 }
 
