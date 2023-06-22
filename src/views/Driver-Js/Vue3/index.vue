@@ -1,5 +1,5 @@
 <template>
-    <div class="app-container">
+    <div class="">
         <div id="hamburger-container">
             Hamburger
         </div>
@@ -12,28 +12,32 @@
         <p>The guide is useful for some people who entered the project for the time. You can briefly introduce the features of the project. Demo is based on
             <a href="https://github.com/kamranahmedse/driver.js">driver.js</a>
         </p>
-        <button style="margin-top: 10px" @click.prevent.stop="guide">
+        <button id="button-show" style="margin-top: 10px" @click.prevent.stop="guide">
             Show Guide
         </button>
     </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
 import Driver from 'driver.js';
 import 'driver.js/dist/driver.min.js';
 
-let driver: any = null
-onMounted(() => {
-    driver = new Driver();
-});
+const driverInstance = new Driver({ animate: true });
 
 const guide = () => {
     const steps = [
         {
+            element: '#button-show',
+            popover: {
+                title: 'Show Guide',
+                content: 'The guide is useful for some people who entered the project for the time.',
+                position: 'top',
+            }
+        },
+        {
             element: '#hamburger-container',
             popover: {
-                title: 'Hambuger',
+                title: 'Hamburger',
                 description: 'Open && Close sidebar',
                 position: 'bottom'
             }
@@ -55,8 +59,9 @@ const guide = () => {
             },
             padding: 0
         }
-    ]
-    driver.defineSteps(steps);
-    driver.start();
+    ];
+
+    driverInstance.defineSteps(steps);
+    driverInstance.start();
 }
 </script>

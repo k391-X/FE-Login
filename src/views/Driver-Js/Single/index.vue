@@ -16,7 +16,7 @@
       <button @click="resetForm">Reset</button>
     </div>
 
-    <div id="myElement" style="border: 2px solid red">
+    <div id="myElement" ref="myElement" style="border: 2px solid red">
       <p><strong>Name:</strong>{{ name }}</p>
       <p><strong>Email:</strong>{{ email }}</p>
       <p><strong>Password:</strong>{{ password }}</p>
@@ -25,21 +25,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import VueDriver from 'vue-driver.js';
+import { ref } from 'vue'
 import Driver from 'driver.js'
 import 'driver.js/dist/driver.min.css'
 
-let driver: any = null;
-onMounted(() => {
-  driver = new Driver();
-});
+
 
 const name = ref('Knife')
 const email = ref('ychag@example.com')
 const password = ref('khnfie')
 
 const submitForm = () => {
+  const driver = new Driver();
 
   driver.highlight({
     element: '#myElement',

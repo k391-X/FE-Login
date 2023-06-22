@@ -1,6 +1,7 @@
-import { notify } from '@kyvg/vue3-notification'
-import Driver from "driver.js"
-import "driver.js/dist/driver.min.css"
+import { notify } from '@kyvg/vue3-notification';
+import Driver from "driver.js";
+import "driver.js/dist/driver.min.css";
+import {HighlightOptions, Step } from './types';
 
 const notifyMessage = (status: number, message: string) => {
   if (status == 422) {
@@ -23,17 +24,23 @@ const notifyMessage = (status: number, message: string) => {
 }
 
 const driver = new Driver();
-const highlighting = (selectorName: string) => {
+
+const singleHighlight = (selectorName: string, options:HighlightOptions) => {
   let selector = `#${selectorName}`;
-  console.log(selector);
   return driver.highlight({
     element: selector,
     popover: {
-      title: 'Title for the Popover',
-      description: 'Description for the Popover',
-      position: 'left',
+      title: options.title,
+      description: options.description || 'Default Description',
+      position: options.position || 'bottom',
     }
   });
 }
 
-export { notifyMessage, highlighting }
+
+const stepGuild = (steps: Step[]) => {
+  driver.defineSteps(steps);
+  driver.start();
+}
+
+export { notifyMessage, singleHighlight, stepGuild }
