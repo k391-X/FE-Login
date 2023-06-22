@@ -12,7 +12,7 @@
     </div>
 
     <div>
-      <button @click="submitForm">Submit</button>
+      <button @click="handleClick">Submit</button>
       <button @click="resetForm">Reset</button>
     </div>
 
@@ -26,27 +26,21 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import Driver from 'driver.js'
-import 'driver.js/dist/driver.min.css'
-
-
+import { singleHighlight } from '../../../utils/index';
+import { HighlightOptions, popoverPosition } from '../../../utils/types';
 
 const name = ref('Knife')
 const email = ref('ychag@example.com')
 const password = ref('khnfie')
 
-const submitForm = () => {
-  const driver = new Driver();
 
-  driver.highlight({
-    element: '#myElement',
-    popover: {
-      title: 'Title for the Popover',
-      description: 'Description for the Popover',
-      position: 'left',
-    },
-  });
-
+const handleClick = () => {
+  let highlightOptions: HighlightOptions = {
+        title: 'Click to button',
+        description: 'Click to button to viewer',
+        position: popoverPosition('bottom')
+    };
+  singleHighlight('email', highlightOptions);
 }
 
 const resetForm = () => {

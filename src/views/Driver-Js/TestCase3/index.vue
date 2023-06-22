@@ -8,20 +8,18 @@
 
 <script setup lang="ts">
 import { singleHighlight, stepGuild } from '../../../utils/index.ts';
-import { PopoverPosition } from '../../../utils/types';
+import { popoverPosition } from '../../../utils/types';
 import { steps } from './step';
 
 const startTour = () => {
     stepGuild(steps);
 };
 
-const position: PopoverPosition = 'top';
-
 const highlighted = () => {
     let highlightOptions = {
         title: 'Click to button',
         description: 'Click to button to viewer',
-        position: position
+        position: popoverPosition('top')
     };
     singleHighlight('startButton',highlightOptions);
 };

@@ -1,9 +1,4 @@
-import { PopoverPosition } from '../../../utils/types';
-
-const bottom: PopoverPosition = 'bottom';
-const top: PopoverPosition = 'top';
-const left: PopoverPosition = 'left';
-const right: PopoverPosition = 'right';
+import { popoverPosition } from '../../../utils/types';
 
 const steps = [
     {
@@ -11,7 +6,7 @@ const steps = [
         popover: {
             title: 'Welcome!',
             description: 'Click this button to get started.',
-            position: bottom
+            position: popoverPosition('bottom')
         }
     },
     {
@@ -19,7 +14,7 @@ const steps = [
         popover: {
             title: 'Important Message',
             description: 'Read this message carefully.',
-            position: top
+            position: popoverPosition('top')
         }
     }
 ];
