@@ -32,12 +32,12 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/driver01',
     name: 'Driver01',
-    component: () => import('../views/Driver-Js/Single/index.vue'),
+    component: () => import('../views/Driver-Js/TestCase1/index.vue'),
   },
   {
     path: '/driver02',
     name: 'Driver02',
-    component: () => import('../views/Driver-Js/Vue3/index.vue'),
+    component: () => import('../views/Driver-Js/TestCase2/index.vue'),
   },
   {
     path: '/driver03',

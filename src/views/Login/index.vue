@@ -2,7 +2,7 @@
   <div class="container">
     <section id="content">
       <form @submit.prevent>
-        <h1>Login Form</h1>
+        <h1 id="titleLogin">Login Form</h1>
         <div class="input">
           <input
             type="text"
@@ -27,9 +27,9 @@
           Wrong username or password!
         </label>
         <div>
-          <input type="submit" value="Log in" @click="handleLogin" />
-          <a href="#">Lost your password?</a>
-          <a href="#">Register</a>
+          <input id="submitLogin" type="submit" value="Log in" @click="handleLogin" />
+          <a id="forgotPassword" href="#">Lost your password?</a>
+          <a id="registerLogin" href="#">Register</a>
         </div>
       </form>
     </section>
@@ -37,13 +37,17 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { reactive, ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { notifyMessage } from '../../utils/index'
+import { notifyMessage, stepGuild } from '../../utils/index'
 import { login } from '../../services/request/api'
-import { notify } from '@kyvg/vue3-notification'
+import { steps } from './Guild-Login/steps';
 
 const router = useRouter()
+
+onMounted(() => {
+  stepGuild(steps);
+});
 
 const data = reactive({
   userName: 'Knife',

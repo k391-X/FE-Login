@@ -1,7 +1,7 @@
 <template>
     <div id="container">
         <h1>Welcome to My App</h1>
-        <button id="startButton" @click="startTour">Get Started</button>
+        <button id="startButton" @click="highlighted">Get Started</button>
         <p id="message">This is a sample paragraph</p>
     </div>
 </template>
@@ -17,8 +17,8 @@ const startTour = () => {
 
 const highlighted = () => {
     let highlightOptions = {
-        title: 'Click to button',
-        description: 'Click to button to viewer',
+        title: 'Did you know?',
+        description: 'Created by driverJS',
         position: popoverPosition('top')
     };
     singleHighlight('startButton',highlightOptions);

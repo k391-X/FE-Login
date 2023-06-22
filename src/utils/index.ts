@@ -1,7 +1,7 @@
 import { notify } from '@kyvg/vue3-notification';
 import Driver from "driver.js";
 import "driver.js/dist/driver.min.css";
-import {HighlightOptions, Step } from './types';
+import { HighlightOptions, Step } from './types';
 
 const notifyMessage = (status: number, message: string) => {
   if (status == 422) {
