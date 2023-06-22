@@ -1,4 +1,6 @@
 import { notify } from '@kyvg/vue3-notification'
+import Driver from "driver.js"
+import "driver.js/dist/driver.min.css"
 
 const notifyMessage = (status: number, message: string) => {
   if (status == 422) {
@@ -20,4 +22,18 @@ const notifyMessage = (status: number, message: string) => {
   }
 }
 
-export { notifyMessage }
+const driver = new Driver();
+const highlighting = (selectorName: string) => {
+  let selector = `#${selectorName}`;
+  console.log(selector);
+  return driver.highlight({
+    element: selector,
+    popover: {
+      title: 'Title for the Popover',
+      description: 'Description for the Popover',
+      position: 'left',
+    }
+  });
+}
+
+export { notifyMessage, highlighting }

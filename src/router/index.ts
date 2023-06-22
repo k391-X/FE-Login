@@ -29,6 +29,21 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Logout',
     component: () => import('../views/Logout/index.vue'),
   },
+  {
+    path: '/driver01',
+    name: 'Driver01',
+    component: () => import('../views/Driver-Js/Single/index.vue'),
+  },
+  {
+    path: '/driver02',
+    name: 'Driver02',
+    component: () => import('../views/Driver-Js/Vue3/index.vue'),
+  },
+  {
+    path: '/driver03',
+    name: 'Driver03',
+    component: () => import('../views/Driver-Js/TestCase3/index.vue'),
+  }
 ]
 
 const router = createRouter({

@@ -7,13 +7,15 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "format": "prettier --write \"src/**/*.@(js|ts|vue)\""  
+    "format": "prettier --write \"src/**/*.@(js|ts|vue)\""
   },
   "dependencies": {
     "@kyvg/vue3-notification": "^2.9.1",
     "axios": "^1.4.0",
     "cors": "^2.8.5",
+    "driver.js": "^0.9.8",
     "vue": "^3.3.4",
+    "vue-driver.js": "^1.0.3",
     "vue-router": "^4.2.2",
     "vuex": "^4.1.0"
   },
