@@ -92,7 +92,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { singleHighlight } from '../../../utils/index'
-import { HighlightOptions, popoverPosition } from '../../../utils/types'
+import { HighlightOptions, setPosition } from '../../../utils/types'
 
 const name = ref('Knife')
 const email = ref('ychag@example.com')
@@ -102,7 +102,7 @@ const handleClick = () => {
   let highlightOptions: HighlightOptions = {
     title: 'Click to button',
     description: 'Click to button to viewer',
-    position: popoverPosition('bottom'),
+    position: setPosition('bottom'),
   }
   singleHighlight('email', highlightOptions)
 }

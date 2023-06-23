@@ -23,18 +23,65 @@ const notifyMessage = (status: number, message: string) => {
   }
 }
 
-const driver = new Driver();
+const driver = new Driver({
+  
+  // Called when element is about to be highlighted
+  onHighlightStarted: () => {
+    console.log('Event onHighlightStarted');  
+  },
 
-const singleHighlight = (selectorName: string, options:HighlightOptions) => {
+  // Called when element is fully highlighted
+  onHighlighted: () => {
+    console.log('Event onHighlighted');
+    getApiMethodsDriverJS();
+  },
+
+  // Called when element has been deselected
+  onDeselected: () => {
+    console.log('Event onDeselected');
+  },
+
+  // Called when overlay is about to be cleared
+  onReset: () => {
+    console.log('Event onReset');
+  },
+
+  // Called when moving to next step on any step
+  onNext: () => {
+    console.log('Event onNext');
+  },
+
+  // Called when moving to previous step on any step 
+  onPrevious: () => {
+    console.log('Event onPrevious');
+  }
+}
+);
+
+const singleHighlight = (selectorName: string, options?: HighlightOptions) => {
   let selector = `#${selectorName}`;
   return driver.highlight({
     element: selector,
     popover: {
-      title: options.title,
-      description: options.description || 'Default Description',
-      position: options.position || 'bottom',
+      title: options?.title,
+      description: options?.description || 'Default Description',
+      position: options?.position,
     }
   });
+}
+
+const getApiMethodsDriverJS = () => {
+  if (driver.isActivated) {
+    console.log('Driver is active');
+  }
+
+  const activeElement = driver.getHighlightedElement();
+  console.log('Active element:');
+  console.log(activeElement);
+
+  const lastActiveElement = driver.getLastHighlightedElement();
+  console.log('Last active element: ' + lastActiveElement);
+  console.log(lastActiveElement);
 }
 
 

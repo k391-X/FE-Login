@@ -1,12 +1,13 @@
-import { popoverPosition } from '../../../utils/types';
+import { setPosition } from '../../../utils/types';
 
 const steps = [
     {
         element: '#startButton',
+        stateBackground: "#7fffd4",
         popover: {
             title: 'Welcome!',
             description: 'Click this button to get started.',
-            position: popoverPosition('bottom')
+            position: setPosition('bottom-right')
         }
     },
     {
@@ -14,7 +15,7 @@ const steps = [
         popover: {
             title: 'Important Message',
             description: 'Read this message carefully.',
-            position: popoverPosition('top')
+            position: setPosition('top')
         }
     }
 ];

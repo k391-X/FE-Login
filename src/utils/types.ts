@@ -1,29 +1,25 @@
-type PopoverPosition = 'top' | 'right' | 'bottom' | 'left';
+type PopoverPosition =
+    'left' | 'left-center' | 'left-bottom' |
+    'top' | 'top-center' | 'top-right' |
+    'right' | 'right-center' | 'right-bottom' |
+    'bottom' | 'bottom-center' | 'bottom-right' |
+    'mid-center';
 
-export const popoverPosition = (position:string) => {
-    let result:PopoverPosition = 'bottom';
-    if (position === 'top') {
-        result = 'top';
-    } else if (position === 'right') {
-        result = 'right';
-    } else if (position === 'left') {
-        result = 'left';
-    }
-
-    return result;
+export const setPosition = (position: PopoverPosition) => {
+    return position;
 }
 
 export interface HighlightOptions {
-  title?: string;
-  description?: string;
-  position: PopoverPosition;
+    title?: string;
+    description?: string;
+    position: PopoverPosition;
 }
 
 export interface Step {
     element: string | HTMLElement;
     popover: {
-      title: string;
-      description: string;
-      position: PopoverPosition;
+        title: string;
+        description: string;
+        position: PopoverPosition;
     }
 };
