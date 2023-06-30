@@ -75,6 +75,18 @@ const getApiMethodsDriverJS = () => {
     console.log('Driver is active');
   }
 
+  if (driver.hasNextStep()) {
+    console.log('Driver has next step');
+  }
+
+  if (driver.hasPreviousStep()) {
+    console.log('Driver has previous step');
+  }
+
+  if (driver.hasHighlightedElement()) {
+    console.log('There is an element hightLighted');
+  }
+
   const activeElement = driver.getHighlightedElement();
   console.log('Active element:');
   console.log(activeElement);
